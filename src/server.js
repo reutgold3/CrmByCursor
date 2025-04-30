@@ -9,8 +9,9 @@ const projectRoutes = require('./routes/projects');
 const invoiceRoutes = require('./routes/invoices');
 const contractRoutes = require('./routes/contracts');
 
-// Import validation middleware
+// Import middleware
 const { validateUser, validateClient, validateProject, validateInvoice } = require('./middleware/validator');
+const loggerMiddleware = require('./middleware/logger');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+app.use(loggerMiddleware);
 
 // Routes with validation
 app.use('/api/auth', authRoutes);

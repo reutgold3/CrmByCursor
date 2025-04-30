@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS api_logs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  method VARCHAR(10) NOT NULL,
+  path VARCHAR(255) NOT NULL,
+  request_body TEXT,
+  status_code INT NOT NULL,
+  response_time INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+); 
